@@ -50,8 +50,9 @@ const stepper = (
 
   const { ctx, cellSize, padding } = options;
   const sidePadding = padding / 2;
-  for (const [y, row] of currGame.grid.entries()) {
-    for (const [x, cell] of row.entries()) {
+  for (let y = 0; y < currGame.grid.length; y++) {
+    for (let x = 0; x < currGame.grid[y].length; x++) {
+      const cell = currGame.grid[y][x];
       ctx.beginPath();
       ctx.rect(
         x * cellSize + sidePadding,

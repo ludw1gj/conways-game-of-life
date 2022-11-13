@@ -1,6 +1,6 @@
 {
   "name": "@ludw1gj/game-of-life-fn",
-  "version": "0.7.0",
+  "version": "0.9.0",
   "description": "Conway's Game of Life using a HTML5 canvas and a 2D context.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

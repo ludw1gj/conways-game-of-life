@@ -18,8 +18,7 @@ export const step = (game: GameOfLife): GameOfLife => ({
 /** Create a random Grid. */
 const createRandomGrid = (dimensions: GridDimensions): Grid =>
   Array(dimensions.numRows)
-    .fill(undefined)
-    .map(() => Array(dimensions.numCols).fill(undefined))
+    .fill(Array(dimensions.numCols).fill(undefined))
     .map((row) => row.map(() => Math.floor(Math.random() * 2)));
 
 /** Generate the next state of the grid. */
