@@ -1,41 +1,41 @@
 export interface GameConfig {
-  canvas: HTMLCanvasElement;
-  gridDimension: GridDimensions;
-  painterOptions: PainterOptions;
-  framesPerSecond: number;
+  canvas: HTMLCanvasElement
+  gridDimension: GridDimensions
+  painterOptions: PainterOptions
+  framesPerSecond: number
 }
 
 /** Conway's Game of Life state. */
 export interface GameOfLife {
-  readonly grid: Grid;
-  readonly gridDimensions: GridDimensions;
+  readonly grid: Grid
+  readonly gridDimensions: GridDimensions
 }
 
 /** A readonly 2D number array. */
-export type Grid = Array<Array<number>>;
+export type Grid = Array<Array<number>>
 
 /** Dimensions of a 2D Grid. */
 export interface GridDimensions {
   /** Number of rows. */
-  numRows: number;
+  numRows: number
   /** Number of columns. */
-  numCols: number;
+  numCols: number
 }
 
 export interface PainterOptions {
-  ctx: CanvasRenderingContext2D;
-  cellSize: number;
-  padding: number;
+  ctx: CanvasRenderingContext2D
+  cellSize: number
+  padding: number
 }
 
 export declare type Painter = (
   options: PainterOptions,
   interupt: PainterInterupt
-) => void;
+) => void
 
 export interface PainterInterupt {
-  stopPaint: boolean;
+  stopPaint: boolean
 }
 
 /** A function that can interupt the painter. */
-export type PainterInterupter = () => void;
+export type PainterInterupter = () => void

@@ -1,3 +1,3 @@
-export * from "./core/game";
-export * from "./core/canvas";
-export * from "./core/types";
+export * from './core/game'
+export * from './core/canvas'
+export * from './core/types'
