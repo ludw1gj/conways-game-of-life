@@ -5,14 +5,8 @@ export interface GameConfig {
   framesPerSecond: number
 }
 
-/** Conway's Game of Life state. */
-export interface GameOfLife {
-  readonly grid: Grid
-  readonly gridDimensions: GridDimensions
-}
-
 /** A readonly 2D number array. */
-export type Grid = Array<Array<number>>
+export type Grid = number[][]
 
 /** Dimensions of a 2D Grid. */
 export interface GridDimensions {
@@ -37,5 +31,5 @@ export interface PainterInterupt {
   stopPaint: boolean
 }
 
-/** A function that can interupt the painter. */
+/** A callback that can interupt the painter. */
 export type PainterInterupter = () => void
