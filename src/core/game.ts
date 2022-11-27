@@ -1,13 +1,51 @@
-import { GridDimensions, Grid } from './types'
+import {
+  GridDimensions,
+  Grid,
+  GameInterupt,
+  GameCallback,
+  GameInterupter,
+} from './types'
+
+export const runGame = (
+  dimensions: GridDimensions,
+  tickerRate: number,
+  callback: GameCallback
+): GameInterupter => {
+  const interupt: GameInterupt = { stop: false }
+  const grid = createGameGrid(dimensions)
+  callback(grid)
+  gameLoop(grid, tickerRate, callback, interupt)
+  return () => {
+    interupt.stop = true
+  }
+}
+
+const gameLoop = (
+  grid: Grid,
+  tickerRate: number,
+  callback: GameCallback,
+  interupt: GameInterupt
+) => {
+  if (interupt.stop) {
+    return
+  }
+  setTimeout(() => {
+    const nextGrid = generateNextGrid(grid)
+    requestAnimationFrame(() => {
+      callback(nextGrid)
+      gameLoop(nextGrid, tickerRate, callback, interupt)
+    })
+  }, tickerRate)
+}
 
 /** Create a conway's game of life game grid. */
-export const createGameGrid = (dimensions: GridDimensions): Grid =>
+const createGameGrid = (dimensions: GridDimensions): Grid =>
   Array(dimensions.numRows)
     .fill(Array(dimensions.numCols).fill(undefined))
     .map((row) => row.map(() => Math.floor(Math.random() * 2)))
 
 /** Generate the next state of the grid. */
-export const generateNextGrid = (grid: Grid): Grid =>
+const generateNextGrid = (grid: Grid): Grid =>
   grid.map((row, y) =>
     row.map((cell, x) => {
       const isAlive = isCellAlive(cell)

@@ -22,14 +22,11 @@ export interface PainterOptions {
   padding: number
 }
 
-export declare type Painter = (
-  options: PainterOptions,
-  interupt: PainterInterupt
-) => void
-
-export interface PainterInterupt {
-  stopPaint: boolean
+export interface GameInterupt {
+  stop: boolean
 }
 
 /** A callback that can interupt the painter. */
-export type PainterInterupter = () => void
+export type GameInterupter = () => void
+
+export type GameCallback = (grid: Grid) => void
