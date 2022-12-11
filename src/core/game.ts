@@ -67,9 +67,9 @@ const generateNextGrid = (grid: Grid): Grid =>
     })
   )
 
-const cellNeighbourIndexes: ReadonlyArray<ReadonlyArray<number>> = [-1, 0, 1]
-  .flatMap((y) => [-1, 0, 1].map((x) => [x, y]))
-  .filter(([x, y]) => x !== 0 && y !== 0)
+const cellNeighbourIndexes: ReadonlyArray<[x: number, y: number]> = [-1, 0, 1]
+  .flatMap((y) => [-1, 0, 1].map((x) => [x, y] as [x: number, y: number]))
+  .filter(([x, y]) => !(x === 0 && y === 0))
 
 /** Check if cell is alive. */
 const isCellAlive = (cell: number): boolean => cell === 1
